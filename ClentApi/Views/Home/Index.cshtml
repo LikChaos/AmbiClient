@@ -1,0 +1,40 @@
+﻿@model ClientApi.Models.Home.HomeViewModel
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div>
+	<table class="table table-striped grid-table">
+		<tr>
+			<td>
+				Название тендера
+			</td>
+			<td>
+				Дата начала
+			</td>
+			<td>
+				Дата окончания
+			</td>
+			<td>
+				URL тендерной площадки
+			</td>
+		</tr>
+		@foreach (var item in Model.DataList)
+		{
+			<tr>
+				<td>
+					@Html.ValueFor(model => item.Name)
+				</td>
+				<td>
+					@Html.ValueFor(model => item.DateStart, "{0:dd/MM/yyyy}")
+				</td>
+				<td>
+					@Html.ValueFor(model => item.DateEnd, "{0:dd/MM/yyyy}")
+				</td>
+				<td>
+					<a href="@item.URL" target="_blank">@item.URL</a>
+				</td>
+			</tr>
+		}
+	</table>
+</div>
